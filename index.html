@@ -10,6 +10,7 @@
 	<input type="text" name="name" conv-question="Question to ask">
 
 	<!-- Define the chat box form-->
+	<!--
 	<div class = "hide">
 	<script>
 	var convForm = $('.my_conv_form_wrapper').convform(){
@@ -33,6 +34,8 @@
 	});
 	</script>
 	</div>
+-->
+
 
 	<html>
 		<head>
@@ -47,7 +50,7 @@
 			position : fixed;
 			bottom: 0;
 			right: 0;
-			width: 100px;
+			width: 400px;
 		}
 		</style>
 		<body class="index is-preload">
@@ -100,23 +103,10 @@
 						</div>
 
 					</section>
-					<div class="fixed">
-						<div class="vertical-align">
-							<div class="container">
-								<div class="row">
-									<div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
-										<div class = "card no-border">
-											<div id="chat" class="conv_form_wrapper">
-												<form action="" method="GET" class="hidden">
-													<select data-conv-question"Hi there! I'm Millie - type in a keyword and I'll bring up more information about it!" name="greeting">
-													</select>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="fixed" contentEditable="true">
+						<img src="./images/Millie.png"/>
+						<input type="text" placeholder = "Hi! I'm Millie - search using keywords and I'll bring up corresponding resources.">
+						<button onClick ="searchRepository('input')[0].value)">Search</button>
 					</div>
 
 				<!-- Main -->
