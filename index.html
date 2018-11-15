@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="dist/jquery.convform.css">
 	<script src="dist/jquery.convform.js"></script>
 
+	<link rel = "stylesheet" href="pageStructure.css">
+
 	<!-- Define the questions to ask the user-->
 	<input type="text" name="name" conv-question="Question to ask">
 
@@ -104,9 +106,10 @@
 
 					</section>
 					<div class="fixed" contentEditable="true">
-						<img src="./images/Millie.png"/>
-						<input type="text" placeholder = "Hi! I'm Millie - search using keywords and I'll bring up corresponding resources.">
-						<button onClick ="searchRepository('input')[0].value)">Search</button>
+						<img src="./images/Millie.png"
+							style="width:200px;height:200px;"/>
+						<input type="text" style = "width: 200px;"placeholder = "MILLIE"></input>
+						<input type = "button"class = "MillieButton" onClick ="searchRepository('input')[0].value)"></input>
 					</div>
 
 				<!-- Main -->
