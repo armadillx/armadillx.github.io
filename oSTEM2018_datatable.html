@@ -16,39 +16,48 @@
     <style>
     td {
       padding: 15px;
-      border: 1px solid black;
+      border: 1px solid #13232F;
     }
+
     th {
       padding: 2%;
       text-align: left;
     }
+
     table {
       padding: 2%;
     }
+
+    tr:hover {
+      background-color: #CCAC1C;
+      color: black;
+    }
+
     .active-btn {
       background-color: purple;
       color: white;
     }
 
     .topnav {
-    overflow: hidden;
-    background-color: #e9e9e9;
+      overflow: hidden;
+      background-color: #e9e9e9;
     }
 
     .topnav a {
-        float: left;
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
     }
 
     .topnav a:hover {
         background-color: #ddd;
         color: black;
     }
+
     .topnav input[type=text] {
         float: right;
         /*padding: 6px;*/
@@ -67,22 +76,31 @@
         margin: 0;
         /*padding: 14px;*/
     }
-    .topnav input[type=text] {
-        border: 1px solid #ccc;
-    }
-  }
 
-  .search-btn {
-    text-align: center;
-  }
+      .topnav input[type=text] {
+          border: 1px solid #ccc;
+      }
+    }
+
+    .search-btn:hover {
+      background-color: #A26E2F;
+      color: white;
+    }
+
+    a {
+      color: #A4133C;
+    }
 
     </style>
   </head>
 
 
-<div class="topnav">
-  <a class="active" href="index.html">Home</a>
-  <input type="text" id="search" placeholder="Search...">
+<div class="topnav" style='height: 120px'>
+  <span>
+    <a href="index.html" style='float: left'>Home</a>
+    <input type="text" id="search" style='float: left;'placeholder="Search... (press enter)">
+  </span>
+  <img src="./images/Armadillx_Logo.png" alt='Armadillx_Logo.png' height=100px style='float: right; margin-top: -100px; padding: 0;'>
 </div>
 
 <div id="tags">
@@ -1200,15 +1218,14 @@
 
   function search(indices){
     if(indices.length > 0){
-      $("tr").hide();
+      $("tr:not(#table-header)").hide();
       for(i in indices){
         $("#"+indices[i]).show();
       }
     } else {
-      $("tr").show();
+      $("tr:not(#table-header)").show();
       $("#search").val("");
     }
-    $("#table-header").show();
   }
 
   function get_indices(term){
