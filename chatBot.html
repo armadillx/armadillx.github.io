@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>convForm - example</title>
+	<title>MillieChat</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -11,6 +11,9 @@
 </head>
 <body>
 	<section id="demo">
+		<img style="position:absolute; TOP:150px; LEFT: 0px; WIDTH:450px; HEIGHT:350px" src="images/Millie.png"/>
+		<textarea style="position:absolute; TOP: 300px; LEFT: 900px; WIDTH:290px"rows="4" cols="50" wrap="hard">If you are in a crisis situation, here are some resources that can help: https://ostem.org/page/crisis-hotlines
+		</textarea>
 	    <div class="vertical-align">
 	        <div class="container">
 	            <div class="row">
@@ -18,12 +21,9 @@
 	                    <div class="card no-border">
 	                        <div id="chat" class="conv-form-wrapper">
 	                            <form action="" method="GET" class="hidden">
-	                                <select data-conv-question="Hello! I'm a bot created from a HTML form. Can I show you some features? (this question comes from a select)" name="first-question">
-	                                    <option value="yes">Yes</option>
-	                                    <option value="sure">Sure!</option>
-	                                </select>
-	                                <input type="text" name="name" data-conv-question="Alright! First, tell me your full name, please.|Okay! Please, tell me your name first.">
-	                                <input type="text" data-conv-question="Howdy, {name}:0! It's a pleasure to meet you. (note that this question doesn't expect any answer)" data-no-answer="true">
+	                                <input type="text" name = "question1"data-conv-question="Hi! I'm Millie - have a question? I can help you dig a little deeper.">
+	                                <input type="text" data-conv-question="Hm...let me look into that." data-no-answer="true">
+	                                <input type="text" data-conv-question="Howdy, {name}! It's a pleasure to meet you. (note that this question doesn't expect any answer)" data-no-answer="true">
 	                                <input type="text" data-conv-question="This plugin supports multi-select too. Let's see an example." data-no-answer="true">
 	                                <select name="multi[]" data-conv-question="What kind of music do you like?" multiple>
 	                                    <option value="Rock">Rock</option>
