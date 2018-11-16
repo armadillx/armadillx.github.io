@@ -28,4 +28,4 @@ In browser:
 `http://localhost:8080`
 
 Some scratch data work (with Shelley's beautifully cleaned data :) ):
-https://github.com/mitchalexbailey/oSTEM_scratch/blob/master/README.md 
+https://github.com/mitchalexbailey/oSTEM_scratch 
