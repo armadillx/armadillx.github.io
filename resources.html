@@ -6,7 +6,7 @@
 -->
 <html>
   <head>
-    <title>No Sidebar - Twenty by HTML5 UP</title>
+    <title>Resources</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -17,18 +17,18 @@
 
       <!-- Header -->
         <header id="header">
-          <h1 id="logo"><a href="index.html">Twenty <span>by HTML5 UP</span></a></h1>
+          <h1 id="logo"><a href="index.html">ARMADILLX by Queerth Dimension</span></a></h1>
           <nav id="nav">
             <ul>
               <li class="current"><a href="index.html">Welcome</a></li>
               <li class="submenu">
-                <a href="#">Layouts</a>
+                <a href="#">Menu</a>
                 <ul>
-                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                  <li><a href="no-sidebar.html">No Sidebar</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="resources.html">Resources</a></li>
+                  <li><a href="transportation.html">Transportation</a></li>
                   <li><a href="contact.html">Contact</a></li>
-                  <li class="submenu">
+                  <!-- <li class="submenu">
                     <a href="#">Submenu</a>
                     <ul>
                       <li><a href="#">Dolore Sed</a></li>
@@ -37,7 +37,7 @@
                       <li><a href="#">Sed Magna</a></li>
                       <li><a href="#">Ipsum Nisl</a></li>
                     </ul>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li><a href="#" class="button primary">Sign Up</a></li>
@@ -50,8 +50,7 @@
 
           <header class="special container">
             <span class="icon fa-mobile"></span>
-            <h2>And finally there's <strong>No Sidebar</strong></h2>
-            <p>Where that in the center faces the nameless horrors alone.</p>
+            <h2>Resources</h2>
           </header>
 
           <!-- One -->
@@ -62,77 +61,16 @@
                   <section>
                     <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
                     <header>
-                      <h3>Dolore Amet Consequat</h3>
+                      <h3>Coming soon!</h3>
                     </header>
-                       <script>
-                        var header = document.querySelector('header');
-                        var section = document.querySelector('section');
-
-                        var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
-                        var request = new XMLHttpRequest();
-                        request.open('GET', requestURL);
-                        request.responseType = 'text';
-                        request.send();
-
-                        request.onload = function() {
-                          var resourcesText = request.response;
-                          var resourcesJSON = JSON.parse(resourcesText);
-                          // populateHeader(superHeroes);
-                          showResources(resourcesJSON);
-                        }
-                        
-                        // function populateHeader(jsonObj) {
-                        //   var myH1 = document.createElement('h1');
-                        //   myH1.textContent = jsonObj['squadName'];
-                        //   header.appendChild(myH1);
-
-                        //   var myPara = document.createElement('p');
-                        //   myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
-                        //   header.appendChild(myPara);
-
-                        // }
-                        
-                        function showResources(jsonObj) {
-                          var heroes = jsonObj['members'];
-
-                          for(var i = 0; i < heroes.length; i++) {
-                            var myArticle = document.createElement('article');
-                            var myH2 = document.createElement('h2');
-                            var myPara1 = document.createElement('p');
-                            var myPara2 = document.createElement('p');
-                            var myPara3 = document.createElement('p');
-                            var myList = document.createElement('ul');
-
-                            myH2.textContent = heroes[i].name;
-                            myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
-                            myPara2.textContent = 'Age: ' + heroes[i].age;
-                            myPara3.textContent = 'Superpowers:';
-
-                            var superPowers = heroes[i].powers;
-                            for(var j = 0; j < superPowers.length; j++) {
-                              var listItem = document.createElement('li');
-                              listItem.textContent = superPowers[j];
-                              myList.appendChild(listItem);
-                            }
-
-                            myArticle.appendChild(myH2);
-                            myArticle.appendChild(myPara1);
-                            myArticle.appendChild(myPara2);
-                            myArticle.appendChild(myPara3);
-                            myArticle.appendChild(myList);
-
-                            section.appendChild(myArticle);
-                          }
-                        }
-
-                        </script>
+                        <p> some text </p>
                   </section>
                 </div>
 
             </section>
 
-          <!-- Two -->
-            <section class="wrapper style1 container special">
+<!--           <!-- Two -->
+<!--             <section class="wrapper style1 container special">
               <div class="row">
                 <div class="col-4 col-12-narrower">
 
@@ -164,8 +102,8 @@
                   </section>
 
                 </div>
-              </div>
-            </section>
+              </div> 
+            </section> -->
 
         </article>
 
@@ -201,30 +139,3 @@
 
   </body>
 </html>
-
-<!--
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-
-    <title>Resources</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body>
-
-      <header>
-
-      </header>
-
-      <section>
-
-      </section>
-
- 
-  </body>
-</html>
--->
