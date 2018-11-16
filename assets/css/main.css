@@ -33,6 +33,10 @@ body {
 	line-height: 1;
 }
 
+.content {
+	height: 100%;
+}
+
 ol, ul {
 	list-style: none;
 }
