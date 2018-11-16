@@ -23,6 +23,10 @@
 	                            <form action="" method="GET" class="hidden">
 	                                <input type="text" name = "question1"data-conv-question="Hi! I'm Millie - have a question? I can help you dig a little deeper.">
 	                                <input type="text" data-conv-question="Hm...let me look into that." data-no-answer="true">
+	                                <input type="text" data-conv-question="Here are the results that I found" data-no-answer="true">
+	                                <script>
+	                                parseKeywords('question1');
+	                                </script>
 	                                <input type="text" data-conv-question="Howdy, {name}! It's a pleasure to meet you. (note that this question doesn't expect any answer)" data-no-answer="true">
 	                                <input type="text" data-conv-question="This plugin supports multi-select too. Let's see an example." data-no-answer="true">
 	                                <select name="multi[]" data-conv-question="What kind of music do you like?" multiple>
@@ -70,9 +74,12 @@
 	</section>
 	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
 	<script type="text/javascript" src="dist/autosize.min.js"></script>
-	<script type="text/javascript" src="dist/jquery.convform.js"></script>
+	<script type="text/javascript" src="dist/jquery.convform.js"></script>]<script src="assets/js/search.js"></script>
 
 	<script>
+		var currKeywords [];
+		var currOrgReturn [];
+		var curretIndex = 0;
 		function google(stateWrapper, ready) {
 			window.open("https://google.com");
 			ready();
@@ -108,6 +115,26 @@
 			}
 			ready();
 		}
+
+		function parseKeywords(keywords) {
+			window.alert('Fucking work please');
+			var words = keywords.split(" ");
+			for (var i = 0; i < words.length; i += 1) {
+				var foundWord = get_indices(words[i]);
+				if (foundWord) {
+					currKeywords[currentIndex] = words[i];
+					currentIndex += 1;
+				}
+			}
+			ready();
+		}
+
+		function findResources(stateWrapper, ready) {
+			for (var i = 0; i<currKeywords.length; i+=1) {
+				get_indices(currKeywords[i]);
+			}
+			sessionStorage.setItem("results", currOrgReturn);
+		}
 	</script>
 	<script>
 		jQuery(function($){
@@ -115,5 +142,6 @@
 			console.log(convForm);
 		});
 	</script>
+
 </body>
 </html>
