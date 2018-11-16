@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="dist/jquery.convform.css">
 	<script src="dist/jquery.convform.js"></script>
 
+	<link rel = "stylesheet" href="pageStructure.css">
+
 	<!-- Define the questions to ask the user-->
 	<input type="text" name="name" conv-question="Question to ask">
 
@@ -63,22 +65,23 @@
 							<ul>
 								<li class="current"><a href="index.html">Welcome</a></li>
 								<li class="submenu">
-									<a href="#">Layouts</a>
-									<ul>
-										<li><a href="left-sidebar.html">Left Sidebar</a></li>
-										<li><a href="right-sidebar.html">Right Sidebar</a></li>
-										<li><a href="no-sidebar.html">No Sidebar</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li class="submenu">
-											<a href="#">Submenu</a>
-											<ul>
-												<li><a href="#">Dolore Sed</a></li>
-												<li><a href="#">Consequat</a></li>
-												<li><a href="#">Lorem Magna</a></li>
-												<li><a href="#">Sed Magna</a></li>
-												<li><a href="#">Ipsum Nisl</a></li>
-											</ul>
-										</li>
+									<a href="#">Menu</a>
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="resources.html">Resources</a></li>
+									<li><a href="transportation.html">Transportation</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<!-- <li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+									-->
 									</ul>
 								</li>
 								<li><a href="#" class="button primary">Sign Up</a></li>
@@ -104,9 +107,10 @@
 
 					</section>
 					<div class="fixed" contentEditable="true">
-						<img src="./images/Millie.png"/>
-						<input type="text" placeholder = "Hi! I'm Millie - search using keywords and I'll bring up corresponding resources.">
-						<button onClick ="searchRepository('input')[0].value)">Search</button>
+						<img src="./images/Millie.png"
+							style="width:200px;height:200px;"/>
+						<input type="text" style = "width: 200px;"placeholder = "MILLIE"></input>
+						<input type = "button"class = "MillieButton" onClick ="searchRepository('input')[0].value)"></input>
 					</div>
 
 				<!-- Main -->
@@ -122,10 +126,11 @@
 							it's minimally designed, fully responsive, built on HTML5/CSS3,
 							and, like all my stuff,
 							<br />
-							released for free under the <a href="http://html5up.net/license">Creative Commons Attribution 3.0</a> license. Have fun!</p>
+							released for free under the <a href="http://html5up.net/license" style="color:#A4133C">Creative Commons Attribution 3.0</a> license. Have fun!</p>
 						</header>
 
 						<!-- One -->
+						<!--
 							<section class="wrapper style2 container special-alt">
 								<div class="row gtr-50">
 									<div class="col-8 col-12-narrower">
@@ -155,8 +160,10 @@
 									</div>
 								</div>
 							</section>
+						-->
 
 						<!-- Two -->
+						<!--
 							<section class="wrapper style1 container special">
 								<div class="row">
 									<div class="col-4 col-12-narrower">
@@ -194,13 +201,14 @@
 									</div>
 								</div>
 							</section>
+						-->
 
 						<!-- Three -->
 						<!-- Links -->
 							<section class="wrapper style3 container special">
 
 								<header class="major">
-									<h2>Links to resources</h2>
+									<h2>Resources</h2>
 								</header>
 
 								<div class="row">
@@ -211,7 +219,15 @@
 											<header>
 												<h3>List of organizations</h3>
 											</header>
-											<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
+											<p>Filter our list of organizations by what you need.</p>
+
+											<footer>
+												<ul class="buttons">
+													<li>
+													<a href="resources.html" class="button small">See More</a>
+													</li>
+												</ul>
+											</footer>
 										</section>
 
 									</div>
@@ -222,7 +238,14 @@
 											<header>
 												<h3>Transportation</h3>
 											</header>
-											<p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
+											<p>Plan your trip or get a ride to the resource you need.</p>
+											<footer>
+												<ul class="buttons">
+													<li>
+													<a href="transportation.html" class="button small">See More</a>
+													</li>
+												</ul>
+											</footer>
 										</section>
 
 									</div>
@@ -254,17 +277,18 @@
 								</div>
 							-->
 
-								<footer class="major">
+								<!-- <footer class="major">
 									<ul class="buttons">
 										<li><a href="#" class="button">See More</a></li>
 									</ul>
-								</footer>
+								</footer> -->
 
 							</section>
 
 					</article>
 
 				<!-- CTA -->
+				<!--
 					<section id="cta">
 
 						<header>
@@ -279,6 +303,7 @@
 						</footer>
 
 					</section>
+				-->
 
 				<!-- Footer -->
 					<footer id="footer">
