@@ -1229,6 +1229,7 @@
       $("tr:not(#table-header)").show();
       $("#search").val("");
       $(".search-btn").removeClass("active-btn");
+      active_buttons = [];
       // alert("No results for this combination");
     }
   }
@@ -1236,19 +1237,21 @@
   function get_indices(term, button=false){
     term = term.toLowerCase();
     temp_indices = search_mapping[term];
+    temp = []
     if(button & indices.length > 0){
-      for(i in temp_indices){
-        index = indices.indexOf(temp_indices[i]);
-        if(indices.length > 0 & index > -1){
-          indices.splice(index, 1);
+      for(i in indices){
+        index = temp_indices.indexOf(indices[i]);
+        if(index == -1){
+          console.log("Non overlapping result");
+        } else {temp.push(indices[i])}
+      }
+      indices = temp;
+    } else {
+        for(i in temp_indices){
+          indices.push(temp_indices[i]);
         }
       }
-    } else {
-      for(i in temp_indices){
-        indices.push(temp_indices[i]);
-      }
     }
-  }
 
 
   $('#search').change(function() {
@@ -1274,6 +1277,7 @@
     for(i in active_buttons){
       get_indices(active_buttons[i], button=true);
     }
+
     search(indices);
   });
 
