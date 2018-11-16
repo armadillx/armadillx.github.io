@@ -21,7 +21,6 @@
 
 <div class="topnav" style='height: 120px'>
   <span>
-    <a href="index.html" style='float: left'>Home</a>
     <input type="text" id="search" style='float: left;'placeholder="Search... (press enter)">
   </span>
   <img src="./images/Armadillx_Logo.png" alt='Armadillx_Logo.png' height=100px style='float: right; margin-top: -100px; padding: 0;'>
@@ -1045,76 +1044,32 @@
 </table>
 
 <script>
-//read in from data/oSTEM_search_mapping.json
-// var search_mapping;
-// $.getJSON('./data/oSTEM_search_mapping.json').done(function(json) {
-//   search_mapping = json;
-// })
-
-//   var indices = [];
-//   var active_buttons = [];
-
-//   function search(indices){
-//     if(indices.length > 0){
-//       $("tr:not(#table-header)").hide();
-//       for(i in indices){
-//         $("#"+indices[i]).show();
-//       }
-//     } else {
-//       $("tr:not(#table-header)").show();
-//       $("#search").val("");
-//       $(".search-btn").removeClass("active-btn");
-//       active_buttons = [];
-//       // alert("No results for this combination");
-//     }
-//   }
-
-//   function get_indices(term, button=false){
-//     term = term.toLowerCase();
-//     temp_indices = search_mapping[term];
-//     temp = []
-//     if(button & indices.length > 0){
-//       for(i in indices){
-//         index = temp_indices.indexOf(indices[i]);
-//         if(index == -1){
-//           console.log("Non overlapping result");
-//         } else {temp.push(indices[i])}
-//       }
-//       indices = temp;
-//     } else {
-//         for(i in temp_indices){
-//           indices.push(temp_indices[i]);
-//         }
-//       }
-//     }
+$('#search').change(function() {
+  val = $("#search").val();
+  get_indices(val);
+  search(indices);
+});
 
 
-  $('#search').change(function() {
-    val = $("#search").val();
-    get_indices(val);
-    search(indices);
-  });
+$(".search-btn").click(function() {
+  if ($(this).hasClass('active-btn')){
+    $(this).removeClass('active-btn')
+    index = active_buttons.indexOf(this.id);
+    if (index > -1) {active_buttons.splice(index, 1);}
+  } else {
+    $(this).addClass('active-btn');
+    active_buttons.push(this.id);
+  }
 
+  indices = [];
+  val = $("#search").val();
+  if(val.length > 0){get_indices(val);}
+  for(i in active_buttons){
+    get_indices(active_buttons[i], button=true);
+  }
 
-  $(".search-btn").click(function() {
-    if ($(this).hasClass('active-btn')){
-      $(this).removeClass('active-btn')
-      index = active_buttons.indexOf(this.id);
-      if (index > -1) {active_buttons.splice(index, 1);}
-    } else {
-      $(this).addClass('active-btn');
-      active_buttons.push(this.id);
-    }
-
-    indices = [];
-    val = $("#search").val();
-    if(val.length > 0){get_indices(val);}
-    for(i in active_buttons){
-      get_indices(active_buttons[i], button=true);
-    }
-
-    search(indices);
-  });
+  search(indices);
+});
 
 </script>
 
