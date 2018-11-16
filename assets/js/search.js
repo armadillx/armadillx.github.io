@@ -18,7 +18,6 @@ function search(indices){
     $("#search").val("");
     $(".search-btn").removeClass("active-btn");
     active_buttons = [];
-    // alert("No results for this combination");
   }
 }
 
