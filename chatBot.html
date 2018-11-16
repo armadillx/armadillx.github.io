@@ -8,11 +8,91 @@
 	<link rel="stylesheet" type="text/css" href="dist/jquery.convform.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="demo.css">
+
+	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="dist/autosize.min.js"></script>
+	<script type="text/javascript" src="dist/jquery.convform.js"></script>
+	<script src="assets/js/search.js"></script>
+
+	<script>
+
+	</script>
+	<script>
+		jQuery(function($){
+			var convForm = $('#chat').convform();
+			console.log(convForm);
+		});
+	</script>
 </head>
+
+<script>
+	var currKeywords = [];
+    var currOrgReturn = [];
+    var currentIndex = 0;
+    function google(stateWrapper, ready) {
+      window.open("https://google.com");
+      // ready();
+    }
+    function bing(stateWrapper, ready) {
+      window.open("https://bing.com");
+      // ready();
+    }
+    var rollbackTo = false;
+    var originalState = false;
+    function storeState(stateWrapper, ready) {
+      rollbackTo = stateWrapper.current;
+      console.log("storeState called: ",rollbackTo);
+      // ready();
+    }
+    function rollback(stateWrapper, ready) {
+      console.log("rollback called: ", rollbackTo, originalState);
+      console.log("answers at the time of user input: ", stateWrapper.answers);
+      if(rollbackTo!=false) {
+        if(originalState==false) {
+          originalState = stateWrapper.current.next;
+            console.log('stored original state');
+        }
+        stateWrapper.current.next = rollbackTo;
+        console.log('changed current.next to rollbackTo');
+      }
+      // ready();
+    }
+    function restore(stateWrapper, ready) {
+      if(originalState != false) {
+        stateWrapper.current.next = originalState;
+        console.log('changed current.next to originalState');
+      }
+      // ready();
+    }
+
+    function parseKeywords(stateWrapper, ready) {
+      window.alert('Fucking work please');
+      keywords = $("input[name=question1]").val();
+      console.log(keywords);
+      var words = keywords.split(" ");
+      for (var i = 0; i < words.length; i += 1) {
+        var foundWord = get_indices(words[i]);
+        if (foundWord) {
+          currKeywords[currentIndex] = words[i];
+          currentIndex += 1;
+        }
+      }
+      // ready();
+    }
+
+    function findResources(stateWrapper, ready) {
+      for (var i = 0; i<currKeywords.length; i+=1) {
+        get_indices(currKeywords[i]);
+      }
+      sessionStorage.setItem("results", currOrgReturn);
+    }
+
+</script>
+
 <body>
 	<section id="demo">
 		<img style="position:absolute; TOP:150px; LEFT: 0px; WIDTH:450px; HEIGHT:350px" src="images/Millie.png"/>
-		<textarea style="position:absolute; TOP: 300px; LEFT: 900px; WIDTH:290px"rows="4" cols="50" wrap="hard">If you are in a crisis situation, here are some resources that can help: https://ostem.org/page/crisis-hotlines
+		<textarea style="float: right; margin: 2%; position: relative; width: 20%; display: block;"rows="4" cols="50" wrap="hard">If you are in a crisis situation, here are some resources that can help: https://ostem.org/page/crisis-hotlines
 		</textarea>
 	    <div class="vertical-align">
 	        <div class="container">
@@ -20,37 +100,17 @@
 	                <div class="col-sm-6 col-sm-offset-3 col-xs-offset-0">
 	                    <div class="card no-border">
 	                        <div id="chat" class="conv-form-wrapper">
-	                            <form action="" method="GET" class="hidden">
-	                                <input type="text" name = "question1"data-conv-question="Hi! I'm Millie - have a question? I can help you dig a little deeper.">
+	                            <form method="GET" class="hidden">
+	                            	<form action="parseKeywords()" method="GET" class="hidden">
+	                                	<input type="text"  name = "question1" data-conv-question="Hi! I'm Millie - have a question? I can help you dig a little deeper." data-call-back="parseKeywords">
+	                                </form>
 	                                <input type="text" data-conv-question="Hm...let me look into that." data-no-answer="true">
-	                                <input type="text" data-conv-question="Here are the results that I found" data-no-answer="true">
-	                                <script>
+	                                <input type="text" data-conv-question="Here are the results that I found for 'housing'" data-no-answer="true">
+									<!--<script>
 	                                parseKeywords('question1');
-	                                </script>
-	                                <input type="text" data-conv-question="Howdy, {name}! It's a pleasure to meet you. (note that this question doesn't expect any answer)" data-no-answer="true">
-	                                <input type="text" data-conv-question="This plugin supports multi-select too. Let's see an example." data-no-answer="true">
-	                                <select name="multi[]" data-conv-question="What kind of music do you like?" multiple>
-	                                    <option value="Rock">Rock</option>
-	                                    <option value="Pop">Pop</option>
-	                                    <option value="Country">Country</option>
-	                                    <option value="Classic">Classic</option>
-	                                </select>
-	                                <select name="programmer" data-callback="storeState" data-conv-question="So, are you a programmer? (this question will fork the conversation based on your answer)">
-	                                    <option value="yes">Yes</option>
-	                                    <option value="no">No</option>
-	                                </select>
-	                                <div data-conv-fork="programmer">
-	                                    <div data-conv-case="yes">
-	                                        <input type="text" data-conv-question="A fellow programmer! Cool." data-no-answer="true">
-	                                    </div>
-	                                    <div data-conv-case="no">
-		                                    <select name="thought" data-conv-question="Have you ever thought about learning? Programming is fun!">
-		                                    	<option value="yes">Yes</option>
-		                                    	<option value="no">No..</option>
-		                                    </select>
-	                                    </div>
-	                                </div>
-	                                <input type="text" data-conv-question="convForm also supports regex patterns. Look:" data-no-answer="true">
+	                                </script> -->
+	                                
+<!-- 	                                <input type="text" data-conv-question="convForm also supports regex patterns. Look:" data-no-answer="true">
 	                                <input data-conv-question="Type in your e-mail" data-pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" id="email" type="email" name="email" required placeholder="What's your e-mail?">
 	                                <input data-conv-question="Now tell me a secret (like a password)" type="password" data-minlength="6" id="senha" name="password" required placeholder="password">
 									<select data-conv-question="Selects also support callback functions. For example, try one of these:">
@@ -60,8 +120,25 @@
 	                                <select name="callbackTest" data-conv-question="You can do some cool things with callback functions. Want to rollback to the 'programmer' question before?">
 	                                    <option value="yes" data-callback="rollback">Yes</option>
 	                                    <option value="no" data-callback="restore">No</option>
-	                                </select>
-	                                <select data-conv-question="This is it! If you like me, consider donating! If you need support, contact me. When the form gets to the end, the plugin submits it normally, like you had filled it." id="">
+	                                </select> -->
+	                                <select data-conv-question="<ul>
+																	<li> <a href='http://www.aidshelp.org' target='_blank'>AIDS Foundation Houston, Inc.</a></li>
+																	<li> <a href='http://www.brentwoodfoundation.org' target='_blank'>Brentwood Community Foundation - Project WAITT</a></li>
+																	<li> <a href='http://www.montrosecenter.org/hub/' target='_blank'>Montrose Center</a></li>
+																	<li> <a href='https://www.montrosegraceplace.org/' target='_blank'>Montrose Grace Place</a></li>
+																	<li> <a href='http://brentwoodfoundation.org/our-programs/project-waitt/' target='_blank'>Project WAITT</a></li>
+																	<li> <a href='http://www.tgctr.org' target='_blank'>Transgender Foundation of America - Houston</a></li>
+																	<li> <a href='http://www.covenanthousetx.org/' target='_blank'>Covenant House</a></li>
+																	<li> <a href='http://crossroadsatparkplace.org/' target='_blank'>Crossroads at Park Place</a></li>
+																	<li> <a href='https://npin.cdc.gov/featured-partner/houston-area-community-services-inc-hacs' target='_blank'>Houston Area Community Services (HACS)</a></li>
+																	<li> <a href='https://hcps.harriscountytx.gov/' target='_blank'>Harris County Protective Services\nfor Children and Adults</a></li>
+																	<li> <a href='http://salvationarmyhouston.org/' target='_blank'>Salvation Army</a></li>
+																	<li> <a href='http://salvationarmyhouston.org/yarc/' target='_blank'>Young Adult Resource Center YARC</a></li>
+																	<li> <a href='http://salvationarmyhouston.org/harbor-light/' target='_blank'>Harbor Light Center & Red Shield</a></li>
+																	<li> <a href='http://salvationarmyhouston.org/family-residence/' target='_blank'>Family Residence</a></li>
+																	<li> <a href='https://www.searchhomeless.org/' target='_blank'>SEARCH Resource Center</a></li>
+																	<li> <a href='http://www.standupforkids.org/Houston' target='_blank'>Stand Up for Kids at The Haven Center</a></li>
+																	</ ul>" id="">
 	                                    <option value="">Awesome!</option>
 	                                </select>
 	                            </form>
@@ -72,76 +149,7 @@
 	        </div>
 	    </div>
 	</section>
-	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
-	<script type="text/javascript" src="dist/autosize.min.js"></script>
-	<script type="text/javascript" src="dist/jquery.convform.js"></script>]<script src="assets/js/search.js"></script>
 
-	<script>
-		var currKeywords [];
-		var currOrgReturn [];
-		var curretIndex = 0;
-		function google(stateWrapper, ready) {
-			window.open("https://google.com");
-			ready();
-		}
-		function bing(stateWrapper, ready) {
-			window.open("https://bing.com");
-			ready();
-		}
-		var rollbackTo = false;
-		var originalState = false;
-		function storeState(stateWrapper, ready) {
-			rollbackTo = stateWrapper.current;
-			console.log("storeState called: ",rollbackTo);
-			ready();
-		}
-		function rollback(stateWrapper, ready) {
-			console.log("rollback called: ", rollbackTo, originalState);
-			console.log("answers at the time of user input: ", stateWrapper.answers);
-			if(rollbackTo!=false) {
-				if(originalState==false) {
-					originalState = stateWrapper.current.next;
-						console.log('stored original state');
-				}
-				stateWrapper.current.next = rollbackTo;
-				console.log('changed current.next to rollbackTo');
-			}
-			ready();
-		}
-		function restore(stateWrapper, ready) {
-			if(originalState != false) {
-				stateWrapper.current.next = originalState;
-				console.log('changed current.next to originalState');
-			}
-			ready();
-		}
-
-		function parseKeywords(keywords) {
-			window.alert('Fucking work please');
-			var words = keywords.split(" ");
-			for (var i = 0; i < words.length; i += 1) {
-				var foundWord = get_indices(words[i]);
-				if (foundWord) {
-					currKeywords[currentIndex] = words[i];
-					currentIndex += 1;
-				}
-			}
-			ready();
-		}
-
-		function findResources(stateWrapper, ready) {
-			for (var i = 0; i<currKeywords.length; i+=1) {
-				get_indices(currKeywords[i]);
-			}
-			sessionStorage.setItem("results", currOrgReturn);
-		}
-	</script>
-	<script>
-		jQuery(function($){
-			var convForm = $('#chat').convform();
-			console.log(convForm);
-		});
-	</script>
 
 </body>
 </html>
