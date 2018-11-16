@@ -1,15 +1,15 @@
 	<!DOCTYPE HTML>
 	<!-- Delare plugin for jQuery chat library -->
-	<script src="//code.jquery.com/jquery.min.js"></script>
+	<!-- <script src="//code.jquery.com/jquery.min.js"></script> -->
 
 	<!--Load jQuery convForm plugin's Javascript and CSS files in the doc -->
-	<link rel="stylesheet" href="dist/jquery.convform.css">
-	<script src="dist/jquery.convform.js"></script>
+	<!-- <link rel="stylesheet" href="dist/jquery.convform.css"> -->
+	<!-- <script src="dist/jquery.convform.js"></script> -->
 
-	<link rel = "stylesheet" href="pageStructure.css">
+	<!-- <link rel = "stylesheet" href="pageStructure.css"> -->
 
 	<!-- Define the questions to ask the user-->
-	<input type="text" name="name" conv-question="Question to ask">
+	<!-- <input type="text" name="name" conv-question="Question to ask"> -->
 
 	<!-- Define the chat box form-->
 	<!--
@@ -54,6 +54,9 @@
 			right: 0;
 			width: 400px;
 		}
+		div.uncaps {
+			text-transform: lowercase;
+		}
 		</style>
 		<body class="index is-preload">
 			<div id="page-wrapper">
@@ -63,11 +66,12 @@
 						<h1 id="logo"><a href="index.html">ArmadillX <span>by Queerth Dimension</span></a></h1>
 						<nav id="nav">
 							<ul>
-								<li class="current"><a href="index.html">Welcome</a></li>
+								<!-- <li class="current"><a href="index.html">Welcome</a></li> -->
 								<li class="submenu">
 									<a href="#">Menu</a>
 								<ul>
 									<li><a href="index.html">Home</a></li>
+									<li><a href="millieshome.html">Millie</a></li>
 									<li><a href="resources.html">Resources</a></li>
 									<li><a href="transportation.html">Transportation</a></li>
 									<li><a href="contact.html">Contact</a></li>
@@ -84,7 +88,7 @@
 									-->
 									</ul>
 								</li>
-								<li><a href="#" class="button primary">Sign Up</a></li>
+								<li><a href="https://www.montrosecenter.org/hub/" target="_blank" class="button primary">Montrose Center</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -102,16 +106,20 @@
 
 							<header>
 								<h2>ARMADILLX</h2>
-								<h3>
-									<a href="chatBot.html">
-										Want to chat with Millie the Armadillo? Click here!
-									</a>
-								</h3>
 							</header>
+								<p class="uncaps">
+									Want to chat with Millie the Armadillo?
+								</p>
+								<footer>
+									<ul class="buttons stacked">
+										<li><a href="chatBot.html" class="button fit scrolly">Click Here</a></li>
+									</ul>
+								</footer>
+							
 						</div>
-						<img style="position:absolute; TOP:150px; LEFT: 0px; WIDTH:350px; HEIGHT:300px" src="images/Millie.png"/>
+						<!-- <img style="position:absolute; TOP:150px; LEFT: 0px; WIDTH:350px; HEIGHT:175px" src="images/Millie.png"/> -->
 
-						<img style="position:absolute; TOP:150px; LEFT:900px; WIDTH:350px; HEIGHT:300px" src="images/MillieReverse.png"/>
+						<img style="position:absolute; TOP:371px; LEFT:850px; WIDTH:700px; HEIGHT:351px" src="images/MillieReverse.png"/>
 					</section>
 
 
@@ -122,7 +130,7 @@
 
 
 						<header class="special container">
-							<span class="icon fa-bar-chart-o"></span>
+							<span class="icon fa-rocket"></span>
 							<h2>Welcome to ArmadillX!
 							<br />
 							We're here to provide information about LGBT+ resources in the Houston area</h2>
@@ -215,7 +223,7 @@
 									<div class="col-6 col-12-narrower">
 
 										<section>
-											<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+											<a href="resources.html" class="image featured"><img src="images/Millie_Org.png" alt="" /></a>
 											<header>
 												<h3>List of organizations</h3>
 											</header>
@@ -234,7 +242,7 @@
 									<div class="col-6 col-12-narrower">
 
 										<section>
-											<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+											<a href="transportation.html" class="image featured"><img src="images/Millie_On_Wheels.png" alt="" /></a>
 											<header>
 												<h3>Transportation</h3>
 											</header>
@@ -309,15 +317,12 @@
 					<footer id="footer">
 
 						<ul class="icons">
-							<li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
-							<li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="http://twitter.com/Montrose_Center" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="http://www.facebook.com/montrosecenter" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
 						</ul>
 
 						<ul class="copyright">
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; ArmadillX 2018</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 
 					</footer>
