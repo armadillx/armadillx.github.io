@@ -61,15 +61,19 @@ tr:hover {
     /*padding: 14px;*/
 }
 
-  .topnav input[type=text] {
+.topnav input[type=text] {
       border: 1px solid #ccc;
   }
+}
+
+.search-btn {
+  position: relative;
+  width: 10%;
 }
 
 .search-btn:hover {
   background-color: #A26E2F;
   color: white;
-  width: 20%;
 }
 
 a {
