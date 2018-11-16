@@ -26,3 +26,6 @@ $ httpserver 8080
 
 In browser:
 `http://localhost:8080`
+
+Some scratch data work (with Shelley's beautifully cleaned data :) ):
+https://github.com/mitchalexbailey/oSTEM_scratch 
