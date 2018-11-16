@@ -9,98 +9,21 @@
     <title>Resources</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/resources.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="assets/js/search.js""></script>
 
-    <style>
-    td {
-      padding: 15px;
-      border: 1px solid #13232F;
-    }
-
-    th {
-      padding: 2%;
-      text-align: left;
-    }
-
-    table {
-      padding: 2%;
-    }
-
-    tr:hover {
-      background-color: #CCAC1C;
-      color: black;
-    }
-
-    .active-btn {
-      background-color: #A4133C;
-      color: white;
-    }
-
-    .topnav {
-      overflow: hidden;
-      background-color: #e9e9e9;
-    }
-
-    .topnav a {
-      float: left;
-      display: block;
-      color: black;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    .topnav input[type=text] {
-        float: right;
-        /*padding: 6px;*/
-        border: none;
-        margin-top: 8px;
-        /*margin-right: 16px;*/
-        font-size: 17px;
-    }
-
-    @media screen and (max-width: 600px) {
-    .topnav a, .topnav input[type=text] {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        /*padding: 14px;*/
-    }
-
-      .topnav input[type=text] {
-          border: 1px solid #ccc;
-      }
-    }
-
-    .search-btn:hover {
-      background-color: #A26E2F;
-      color: white;
-    }
-
-    a {
-      color: #A4133C;
-    }
-
-    </style>
   </head>
 
 
 <div class="topnav" style='height: 120px'>
   <span>
-    <a href="index.html" style='float: left'>Home</a>
     <input type="text" id="search" style='float: left;'placeholder="Search... (press enter)">
   </span>
-  <img src="./images/Armadillx_Logo.png" alt='Armadillx_Logo.png' height=100px style='float: right; margin-top: -100px; padding: 0;'>
+  <img src="./images/Armadillx_Logo.png" alt='Armadillx_Logo.png' height=120px style='float: right; margin-top: -110px; padding: 0;'>
 </div>
 
 <div class="well" id="tags">
@@ -114,7 +37,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr id="table-header">
       <th>TYPE</th>
       <th>ORGANIZATION</th>
       <th>DESCRIPTION/MISSION</th>
@@ -1121,76 +1044,32 @@
 </table>
 
 <script>
-  //read in from data/oSTEM_search_mapping.json
-var search_mapping;
-$.getJSON('./data/oSTEM_search_mapping.json').done(function(json) {
-  search_mapping = json;
-})
+$('#search').change(function() {
+  val = $("#search").val();
+  get_indices(val);
+  search(indices);
+});
 
-  var indices = [];
-  var active_buttons = [];
 
-  function search(indices){
-    if(indices.length > 0){
-      $("tr:not(#table-header)").hide();
-      for(i in indices){
-        $("#"+indices[i]).show();
-      }
-    } else {
-      $("tr:not(#table-header)").show();
-      $("#search").val("");
-      $(".search-btn").removeClass("active-btn");
-      active_buttons = [];
-      // alert("No results for this combination");
-    }
+$(".search-btn").click(function() {
+  if ($(this).hasClass('active-btn')){
+    $(this).removeClass('active-btn')
+    index = active_buttons.indexOf(this.id);
+    if (index > -1) {active_buttons.splice(index, 1);}
+  } else {
+    $(this).addClass('active-btn');
+    active_buttons.push(this.id);
   }
 
-  function get_indices(term, button=false){
-    term = term.toLowerCase();
-    temp_indices = search_mapping[term];
-    temp = []
-    if(button & indices.length > 0){
-      for(i in indices){
-        index = temp_indices.indexOf(indices[i]);
-        if(index == -1){
-          console.log("Non overlapping result");
-        } else {temp.push(indices[i])}
-      }
-      indices = temp;
-    } else {
-        for(i in temp_indices){
-          indices.push(temp_indices[i]);
-        }
-      }
-    }
+  indices = [];
+  val = $("#search").val();
+  if(val.length > 0){get_indices(val);}
+  for(i in active_buttons){
+    get_indices(active_buttons[i], button=true);
+  }
 
-
-  $('#search').change(function() {
-    val = $("#search").val();
-    get_indices(val);
-    search(indices);
-  });
-
-
-  $(".search-btn").click(function() {
-    if ($(this).hasClass('active-btn')){
-      $(this).removeClass('active-btn')
-      index = active_buttons.indexOf(this.id);
-      if (index > -1) {active_buttons.splice(index, 1);}
-    } else {
-      $(this).addClass('active-btn');
-      active_buttons.push(this.id);
-    }
-
-    indices = [];
-    val = $("#search").val();
-    if(val.length > 0){get_indices(val);}
-    for(i in active_buttons){
-      get_indices(active_buttons[i], button=true);
-    }
-
-    search(indices);
-  });
+  search(indices);
+});
 
 </script>
 
