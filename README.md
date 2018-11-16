@@ -16,3 +16,13 @@ To-do
   - The actual code
   - Pseudocode in the meantime
   - Based on tags in data
+
+To run local server:
+```
+$ cd armadillx.github.io
+$ pip install httpserver
+$ httpserver 8080
+```
+
+In browser:
+`http://localhost:8080`
