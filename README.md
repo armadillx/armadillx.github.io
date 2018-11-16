@@ -19,7 +19,7 @@ To-do
 
 To run local server:
 ```
-$ cd armagillx.github.io
+$ cd armadillx.github.io
 $ pip install httpserver
 $ httpserver 8080
 ```
